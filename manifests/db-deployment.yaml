@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.cmd: compose convert -f docker-compose.yaml
     kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yaml
+        kompose.cmd: compose convert -f docker-compose.yaml
         kompose.version: 1.26.1 (a9d05d509)
       creationTimestamp: null
       labels:
@@ -27,10 +27,10 @@ spec:
       containers:
         - env:
             - name: MYSQL_DATABASE
-              value: lena
+              value: db
             - name: MYSQL_ROOT_PASSWORD
-              value: secret
-          image: mhjkeee/mysql
+              value: "1"
+          image: ulyaulya/mysql
           name: db
           ports:
             - containerPort: 3306
