@@ -25,5 +25,4 @@ stage('Check Application') {
         }
 
      
-  }
-}
+  
