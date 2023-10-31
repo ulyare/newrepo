@@ -23,7 +23,7 @@ pipeline {
 stage('Check Application') {
             steps {
                 script {
-                    def appURL = 127.0.0.1 
+                    def appURL = http://127.0.0.1:1501 
                   def response = httpRequest(url: appURL, httpMode: 'GET')
 
                     if (response.status == 200) {
