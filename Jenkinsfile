@@ -3,17 +3,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Check Application') {
+        stage('Test Application') {
             steps {
                 script {
-                    def appURL = 'http://localhost' 
-                    def response = httpRequest(url: appURL, httpMode: 'GET')
-
-                    if (response.status == 200) {
-                        echo "Приложение отвечает со статусом ${response.status}"
-                    } else {
-                        currentBuild.result = 'FAILURE'
-                        error "Приложение не отвечает (статус ${response.status})"
+                    def appURL = 'http://localhost:1501'  // Замените порт и путь к вашему приложению при необходимости
+                    try {
+                        sh "curl -s -f $appURL -o /dev/null"
+                        echo "Приложение на $appURL отвечает успешно."
+                    } catch (Exception e) {
+                        error "Приложение на $appURL недоступно: ${e.getMessage()}"
                     }
                 }
             }
