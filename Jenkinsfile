@@ -6,7 +6,7 @@ pipeline {
         stage('Check Application') {
             steps {
                 script {
-                    def appURL = 'http://127.0.0.1:1501' // Замените 'http://your-app-url' на URL вашего приложения
+                    def appURL = 'https://ya.ru' // Замените 'http://your-app-url' на URL вашего приложения
                     def response = httpRequest(url: appURL, httpMode: 'GET')
 
                     if (response.status == 200) {
