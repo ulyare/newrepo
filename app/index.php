@@ -5,7 +5,7 @@
 <center>
 
 
-<a style="color:Navy; text-decoration: none;"  href="Automobil.php"> Информация об автомобилях </a>
+<a style="color:Navy; text-decoration: none;"  href="Automobil.php"> Информация об автомобиляяях </a>
 <br>
 <br>
 <a style="color:Navy; text-decoration: none;" href="Client.php"> Информация о клиентах </a>
