@@ -23,6 +23,7 @@ stage('Check Application') {
                 }
             }
         }
+}
 
      
   
