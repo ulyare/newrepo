@@ -6,7 +6,7 @@ pipeline {
         stage('Test Application') {
             steps {
                 script {
-                    def appURL = 'http://127.0.0.1:1501'
+                    def appURL = 'http://127.0.0.1'
                     def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" $appURL", returnStatus: true)
                     
                     if (response == 200) {
