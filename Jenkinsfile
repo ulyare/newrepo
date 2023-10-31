@@ -7,18 +7,7 @@ pipeline {
     }
   }
 
-  stages {
-
-    stage('Deploy App to Kubernetes') {
-      steps {
-        container('kubectl') {
-          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
-            sh 'kubectl create ns cruddt'
-            sh 'kubectl apply -f ./manifests -n cruddt'
-          }
-        }
-      }
-    }
+  
 stage('Check Application') {
             steps {
                 script {
