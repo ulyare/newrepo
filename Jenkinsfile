@@ -3,17 +3,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Check Application') {
+        stage('Test Application') {
             steps {
                 script {
-                    def appURL = 'http://127.0.0.1:1501' // Замените 'http://your-app-url' на URL вашего приложения
-                    def response = httpRequest(url: appURL, httpMode: 'GET')
-
-                    if (response.status == 200) {
-                        echo "Приложение отвечает со статусом ${response.status}"
+                    def appURL = 'http://127.0.0.1:1501'
+                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" $appURL", returnStatus: true)
+                    
+                    if (response == 200) {
+                        echo "Приложение отвечает успешно. Код ответа: ${response}"
                     } else {
-                        currentBuild.result = 'FAILURE'
-                        error "Приложение не отвечает (статус ${response.status})"
+                        error "Приложение не отвечает. Код ответа: ${response}"
                     }
                 }
             }
