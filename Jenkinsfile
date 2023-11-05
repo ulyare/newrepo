@@ -13,8 +13,8 @@ pipeline {
       steps {
         container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
-            sh 'kubectl create ns crud1'
-            sh 'kubectl apply -f ./manifests -n crud1'
+            sh 'kubectl create ns crud2'
+            sh 'kubectl apply -f ./manifests -n crud2'
           }
         }
       }
