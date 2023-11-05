@@ -26,6 +26,7 @@ pipeline {
          container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
             sh 'kubectl get svc -n crud2'
+            sleep time: 90, unit: 'SECONDS'
             sh 'kubectl get po -n crud2'
 
           }
