@@ -1,5 +1,5 @@
 ﻿<?php
-$conn = mysqli_connect('crudapp_db_1', 'root', '1', 'db');
+$conn = mysqli_connect('db', 'root', '1', 'db');
 $sql = "SELECT ID_mastera, SUM(Stoimost) AS total_cost FROM Jurnal GROUP BY ID_mastera";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) 
