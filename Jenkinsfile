@@ -28,7 +28,7 @@ pipeline {
             sh 'kubectl get svc -n crud11'
             sleep time: 10, unit: 'SECONDS'
             sh 'kubectl get po -n crud11'
-            sh 'telnet 192.168.49.1 80'
+            sh 'ping -c 4 192.168.49.1'
 
           }
         }          
