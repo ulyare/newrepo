@@ -13,8 +13,8 @@ pipeline {
       steps {
         container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
-            sh 'kubectl create ns crud6'
-            sh 'kubectl apply -f ./manifests -n crud6'
+            sh 'kubectl create ns crud5'
+            sh 'kubectl apply -f ./manifests -n crud5'
           }
         }
       }
@@ -25,9 +25,9 @@ pipeline {
         script{
          container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
-            sh 'kubectl get svc -n crud6'
+            sh 'kubectl get svc -n crud5'
             sleep time: 90, unit: 'SECONDS'
-            sh 'kubectl get po -n crud6'
+            sh 'kubectl get po -n crud5'
             sh 'telnet 192.168.49.1 80'
 
           }
